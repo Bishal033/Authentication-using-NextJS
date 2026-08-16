@@ -22,8 +22,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="container mx-auto px-4 max-w-6xl">
           <Provider>
+            <Header/>
             {children}
-            <Header />
           </Provider>
         </div>
       </body>
