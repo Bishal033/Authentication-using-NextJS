@@ -8,7 +8,7 @@ export default function Profile() {
   if(session.data?.user) {
     return (
       <div>
-       From client : user is signed in 
+       From client : {JSON.stringify(session.data.user)}
       </div>
     );
   }
