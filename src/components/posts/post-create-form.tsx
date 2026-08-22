@@ -36,7 +36,7 @@ export default function PostCreateForm(){
                     labelPlacement="outside"
                     placeholder="Title"
                     />
-                    <Textarea
+                    <Input
                     isInvalid={!!formState.errors.content}
                     errorMessage={formState.errors.content?.join(',')}
                     name="content"
@@ -44,6 +44,10 @@ export default function PostCreateForm(){
                     labelPlacement="outside"
                     placeholder="Content"
                     />
+                    {
+                        formState.errors._form? <div className="rounded p-2 bg-red-200 border-red-400">{formState.errors._form.join(',')}</div> : null
+                    }
+
                     <FromButton>Create Post</FromButton>
                     </div>
                 </form>

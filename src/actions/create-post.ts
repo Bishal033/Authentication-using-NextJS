@@ -11,8 +11,8 @@ import { Content } from "next/font/google";
 
 const createPostSchema = z.object({
     title: z.string().min(3),
-    content: z.string().min(10)
-})
+    content: z.string().min(10),
+});
 
 interface CreatePostFormState{
     errors: {
@@ -34,6 +34,15 @@ export async function createPost(
     if(!result.success){
         return{
         errors: result.error.flatten().fieldErrors
+        }
+    }
+
+    const session = await auth();
+    if(!session || !session.user){
+        return {
+            errors: {
+                _form: ["You must be Signed In to create a Topic"],
+            },
         }
     }
 
